@@ -8,7 +8,7 @@ import { useState } from "react";
 
 
 
-export default function addMovie(){
+export default function AddMovie(){
 
     const [Formdata,setFormData] = useState({
         'name':'',

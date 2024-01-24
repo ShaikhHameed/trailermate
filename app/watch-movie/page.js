@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import DOMPurify from "dompurify";
 
 
-export default function watchMovie(){
+export default function WatchMovie(){
 
     const [Trailer,setTrailer] = useState(null);
 
