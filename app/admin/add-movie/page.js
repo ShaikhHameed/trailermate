@@ -10,13 +10,13 @@ import { useState } from "react";
 
 export default function addMovie(){
 
-    const [formdata,setFormData] = useState({
+    const [Formdata,setFormData] = useState({
         'name':'',
         'description':'',
         'trailer':'',
     });
     
-    const [btnStatus, setBtnStatus] = useState(false);
+    const [BtnStatus, setBtnStatus] = useState(false);
 
     const Addmovie = async (e)=>{
        e.preventDefault();
@@ -24,7 +24,7 @@ export default function addMovie(){
 
        setBtnStatus(true);
        
-       const Data = JSON.stringify(formdata);
+       const Data = JSON.stringify(Formdata);
        console.log(Data);
        try{
 
@@ -51,7 +51,7 @@ export default function addMovie(){
 
     const handleInputChange = (e) =>{
         const {name, value} = e.target;
-        setFormData({...formdata,[name]:value});
+        setFormData({...Formdata,[name]:value});
     }
  
     return(<>
@@ -78,7 +78,7 @@ export default function addMovie(){
                         <textarea  name="trailer" onChange={handleInputChange} className="form-control" ></textarea>
                     </div>
                     <div className="form-group my-4">
-                        <input type="submit" className="btn btn-primary d-block ms-auto" disabled={btnStatus} value={btnStatus ? 'Please Wait..' : 'Submit' } />
+                        <input type="submit" className="btn btn-primary d-block ms-auto" disabled={BtnStatus} value={BtnStatus ? 'Please Wait..' : 'Submit' } />
                     </div>
 
                 </div>

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
 
-  const [allMovies, setAllMovies] = useState([]);
+  const [AllMovies, setAllMovies] = useState([]);
 
 
   useEffect (()=>{
@@ -21,7 +21,7 @@ export default function Home() {
         
         setAllMovies(moviesData);
 
-        console.log(allMovies); // Add this line
+        console.log(AllMovies); // Add this line
     }
     catch(err){
         
@@ -39,14 +39,14 @@ export default function Home() {
 
       <div className="movies-row">
 
-        {allMovies.map((movie,index)=>(
-          <Link href={`watch-movie?id=${movie._id}`}><div className="movie-card" key={movie._id} >
+        {AllMovies.map((movie,item)=>(
+          <Link href={`watch-movie?id=${movie._id}`} key={movie._id}><div className="movie-card"  >
             <div className="movie-info">
               <h4 className="card-movie-title">{movie.name}</h4>
               <div className="movie-card-description">{movie.description}</div>
             </div>
             <div className="movie-card-thumbnail">
-              <img src={movie.poster} />
+              <img src={movie.poster} alt={movie.name} />
             </div>
           </div></Link>
 ))}

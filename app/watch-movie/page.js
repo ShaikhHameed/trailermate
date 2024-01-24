@@ -6,9 +6,7 @@ import DOMPurify from "dompurify";
 
 export default function watchMovie(){
 
-
-    const [movie,setMovie] = useState([]);
-    const [trailer,setTrailer] = useState('');
+    const [Trailer,setTrailer] = useState(null);
 
     const searchParam = useSearchParams();
     const movieId = searchParam.get("id");
@@ -25,9 +23,8 @@ export default function watchMovie(){
         }
 
         getMovie();
-    },[])
+    },[]);
 
-    const sanitizedTrailer = DOMPurify.sanitize(trailer);
 
     
     return(
@@ -35,7 +32,7 @@ export default function watchMovie(){
         <>
             <div className="row">
                 <div className="col-md-8">
-                    <iframe className="rounded-4" width="100%" height="550"  src={trailer}/>
+                    <iframe className="rounded-4" src={Trailer} title="YouTube video player"  frameBorder ="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen  />
                 </div>
             </div>
         </>
