@@ -4,32 +4,30 @@ import { useEffect, useState, Suspense } from 'react';
 import DOMPurify from 'dompurify';
 
 export default function WatchMovie() {
-  // const [trailer, setTrailer] = useState(null);
-  // const searchParam = useSearchParams();
-  // const movieId = searchParam.get('id');
+  const [trailer, setTrailer] = useState(null);
+  const searchParam = useSearchParams();
+  const movieId = searchParam.get('id');
 
-  // const router = useRouter();
+  const router = useRouter();
 
-  // // const {id} = router.query();
+  // const {id} = router.query();
 
-  // // alert(id);
+  // alert(id);
 
-  // useEffect(() => {
-  //   const getMovie = async () => {
-  //     const fetchMovie = await fetch(`/api/getsingleMovie?id=${movieId}`, {
-  //       method: 'GET',
-  //     });
-
-  //     const response = await fetchMovie.json();
-  //     setTrailer(response.movies.trailer);
-  //   };
-
-  //   getMovie();
-  // }, [movieId]);
+  useEffect(() => {
+    (async () => {
+      const fetchMovie = await fetch(`/api/getsingleMovie?id=${movieId}`, {
+        method: 'GET',
+      });
+  
+      const response = await fetchMovie.json();
+      setTrailer(response.movies.trailer);
+    })();
+  }, [movieId]);
 
   return (
     <>
-      {/* <div className="row">
+      <div className="row">
         <div className="col-md-8">
           <iframe
             width="100%"
@@ -42,8 +40,7 @@ export default function WatchMovie() {
             allowFullScreen
           />
         </div>
-      </div> */}
-      <h1>Hello World</h1>
+      </div>
       </>
   );
 }
