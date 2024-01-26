@@ -1,8 +1,19 @@
+:root{
+    --header-height:70px;
+    --sidebar-width:235px;
+}
+
+
 body{
     background-color: black;
     color: white;
 }
 
+
+
+.container{
+    max-width: 1800px;
+}
 
 
 
@@ -84,4 +95,13 @@ body{
     max-height: 990px;
     transform: translateY(0);
     transition: all 0.3s ease-in-out;
+}
+
+.body-content-wrap{
+    width: calc(100% - var(--sidebar-width));
+    height: calc(100% - var(--header-height));
+    margin-left: var(--sidebar-width);
+    margin-top: var(--header-height);
+    background: rgb(44, 44, 44);
+    min-height: calc(100vh - var(--header-height));
 }

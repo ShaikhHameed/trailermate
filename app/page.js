@@ -10,7 +10,7 @@ export default function Home() {
 
 
   useEffect (()=>{
-    const getAllMovies = async() =>{
+    ( async() =>{
       try{
 
         const getMovies = await fetch('/api/get-movies',{
@@ -26,9 +26,9 @@ export default function Home() {
     catch(err){
         
     }
-    }
+    } )();
 
-    getAllMovies();
+    
   },[]);
 
 

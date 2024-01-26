@@ -27,7 +27,7 @@ export default function WatchMovie() {
 
   return (
     <>
-      <div className="row">
+      <div className="row m-0">
         <div className="col-md-8">
           <iframe
             width="100%"

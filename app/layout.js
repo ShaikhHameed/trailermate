@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import './globals.css'
 import React from 'react';
+import Header from './commons/header';
+import SideBar from './commons/sidebar';
 
 
 export const metadata = {
@@ -13,7 +15,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body >
        <React.StrictMode>
-        {children}
+        <Header/>
+        <SideBar/>
+        <div className="body-content-wrap">
+            {children}
+        </div>
         </React.StrictMode>
         </body>
     </html>
