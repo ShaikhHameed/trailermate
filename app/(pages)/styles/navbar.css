@@ -4,6 +4,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    background-color: var(--theme-dark);
 }
 
 .nav-control{
@@ -38,6 +39,6 @@
     top: var(--header-height);
     left: 0;
     width: var(--sidebar-width);
-    background: grey;
+    background: var(--theme-dark);
     overflow-y: scroll;
 }

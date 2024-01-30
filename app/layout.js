@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import './globals.css'
 import React from 'react';
 
 
@@ -14,9 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body >
        <React.StrictMode>
-        <div className="body-content-wrap">
             {children}
-        </div>
         </React.StrictMode>
         </body>
     </html>

@@ -1,6 +1,7 @@
 :root{
     --header-height:70px;
     --sidebar-width:235px;
+    --theme-dark:#080808;
 }
 
 
@@ -14,6 +15,29 @@ body{
 .container{
     max-width: 1800px;
 }
+
+
+/* Custom Scrollbar  */
+::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 14px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--theme-dark); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
 
 
 
@@ -102,6 +126,7 @@ body{
     height: calc(100% - var(--header-height));
     margin-left: var(--sidebar-width);
     margin-top: var(--header-height);
-    background: rgb(44, 44, 44);
+    background:var(--theme-dark);
     min-height: calc(100vh - var(--header-height));
+    padding: 26px;
 }
