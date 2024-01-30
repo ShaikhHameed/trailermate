@@ -1,15 +1,12 @@
 "use client"
+import Link from "next/link";
 import { useState } from "react"
 
 
-export default function Signup(){
-    
+export default function Login(){
     const [credStatus,setCredStatus] = useState(false);
-    const [errMsg, setErrMsg] = useState(true);
-
     const [credemail,SetEmail] = useState('');
     const [password, Setpassword] = useState('');
-    const [confirmPass,setConfirmPass] = useState('')
 
    
 
@@ -24,27 +21,10 @@ export default function Signup(){
         Setpassword(userpassword);
     }
 
-    const validateconfirmpassword = (user,confirm)=>{
-         if(user === confirm){ 
-            setCredStatus(false); 
-            setErrMsg(true);
-            
-        } else{ 
-            setCredStatus(true);  
-            setErrMsg(false); 
-        }
-    }
-
-    const confirmPassword = (e) =>{
-        const userConfirmPassword  = e.target.value;
-        setConfirmPass(userConfirmPassword);
-        validateconfirmpassword(password,userConfirmPassword);
-    }
 
     const ClearForm = ()=>{
         SetEmail("");
         Setpassword("");
-        setConfirmPass("");
     }
     
 
@@ -59,7 +39,7 @@ export default function Signup(){
 
                 const Data = JSON.stringify(Formdata);
                 console.log(Data);    
-                const submitUser = await fetch('/api/addusers',{
+                const submitUser = await fetch('/api/login-user',{
                     method:"POST",
                     body:Data,
                     headers: {
@@ -84,9 +64,9 @@ export default function Signup(){
 
 
     return <>
-            <div>
+            <div className="sign-box">
             <form onSubmit={submitSignup}>
-                <div className="sign-box">
+                <div  >
                     <div className="form-group">
                         <label>Email</label>
                         <input type="email" name="email" onChange={enterEmail} value={credemail} placeholder="Enter Your Password" />
@@ -95,18 +75,18 @@ export default function Signup(){
                         <label>Password</label>
                         <input type="password" name="password" onChange={enterPassword} value={password} placeholder="Enter Your Password" />
                     </div>
+
                     <div className="form-group">
-                        <label>Confirm Password</label>
-                        <input type="password" name="password-confirm" onChange={confirmPassword} value={confirmPass}  placeholder="Confirm Your Password" />
-                        {errMsg !==true && <p className="text-danger">Password does not Match</p>}
+                        <button type="submit"  disabled={credStatus}>Login</button>
                     </div>
 
                     <div className="form-group">
-                        <button type="submit"  disabled={credStatus}>SignUp</button>
+                        <p className="text-center w-100">New to TrailerMate? <Link href="/signup" className="text-white fw-semibold">Join Now</Link></p>
                     </div>
                 </div>
             </form>
             </div>
+
     </>
 
 }

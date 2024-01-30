@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
+      "~image/*": ["public/images/*"],
       "@/*": ["./*"]
     }
   }

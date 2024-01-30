@@ -1,6 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.css'
-import './globals.css'
 import React from 'react';
+import Header from './commons/header';
+import SideBar from './commons/sidebar';
 
 
 
@@ -14,6 +14,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body >
        <React.StrictMode>
+        <Header/>
+        <SideBar/>
         <div className="body-content-wrap">
             {children}
         </div>
