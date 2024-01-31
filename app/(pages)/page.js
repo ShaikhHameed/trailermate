@@ -37,10 +37,12 @@ export default function Home() {
     <>
       <h1>Home</h1>
 
-      <div className="movies-row">
+      <div className="row g-3">
 
         {AllMovies.map((movie,item)=>(
+          <div className="col-md-4 col-lg-3 col-12">
           <Link href={`watch-movie?id=${movie._id}`} key={movie._id}><div className="movie-card"  >
+            
             <div className="movie-info">
               <h4 className="card-movie-title">{movie.name}</h4>
               <div className="movie-card-description">{movie.description}</div>
@@ -48,7 +50,9 @@ export default function Home() {
             <div className="movie-card-thumbnail">
               <img src={movie.poster} alt={movie.name} />
             </div>
+            
           </div></Link>
+          </div>
 ))}
       </div>
 

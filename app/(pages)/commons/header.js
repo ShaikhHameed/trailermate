@@ -1,6 +1,9 @@
+'use client'
+import Link from 'next/link';
 import '../styles/navbar.css';
 
-export default function Header(){
+export default function Header({ onStateChange }){
+
 
     return(
         <>
@@ -8,7 +11,7 @@ export default function Header(){
                 <div className="container"> 
                 <div className="nav-control">
                     <div className="nav-logo">
-                        <h4>TrailerMate</h4>
+                        <Link href='/'><h4>TrailerMate</h4></Link>
                     </div>
                     <div className="nav-contents">
                         
