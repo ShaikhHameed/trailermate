@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import '../styles/navbar.css';
 
-export default function Header({ onStateChange }){
+export default function Header(){
 
 
     return(
