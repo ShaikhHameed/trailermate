@@ -1,7 +1,9 @@
-export default function SideBar(){
+export default function SideBar({sideStatus}){
+
+
     return(
         <>
-            <div className="sidebar">
+            <div className={`sidebar ${sideStatus ===1 ? 'active': '' } `}>
                 
             </div>
         </>

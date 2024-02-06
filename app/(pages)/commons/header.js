@@ -2,16 +2,20 @@
 import Link from 'next/link';
 import '../styles/navbar.css';
 
-export default function Header(){
-
+export default function Header({onSideclick,sideStatus}){
 
     return(
         <>
             <nav id="main-nav">
                 <div className="container"> 
                 <div className="nav-control">
+                    <div>
+                        <div onClick={onSideclick}>
+                            Toggle Button
+                        </div>
                     <div className="nav-logo">
                         <Link href='/'><h4>TrailerMate</h4></Link>
+                    </div>
                     </div>
                     <div className="nav-contents">
                         

@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Header from './commons/header';
 import SideBar from './commons/sidebar';
 import '../globals.css'
+import HeaderLayout from './commons/headerLayout';
 
 
 
@@ -16,8 +17,7 @@ export default function RootLayout({ children }) {
   return (
     
        <React.StrictMode>
-        <Header/>
-        <SideBar/>
+        <HeaderLayout/>
         <div className="body-content-wrap">
             {children}
         </div>

@@ -5,6 +5,7 @@
     left: 0;
     width: 100%;
     background-color: var(--theme-dark);
+    z-index: 100;
 }
 
 .nav-control{
@@ -41,4 +42,12 @@
     width: var(--sidebar-width);
     background: var(--theme-dark);
     overflow-y: scroll;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: all 0.3s cubic-bezier(0.83, 0.17, 0.34, 0.72);
+}
+
+.sidebar.active{
+    transform: translateX(0);
+
 }
