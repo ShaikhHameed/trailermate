@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from 'next/image'
+
 
 
 export default function Home() {
@@ -40,15 +42,15 @@ export default function Home() {
       <div className="row g-3">
 
         {AllMovies.map((movie,item)=>(
-          <div className="col-md-4 col-lg-3 col-12">
-          <Link href={`watch-movie?id=${movie._id}`} key={movie._id}><div className="movie-card"  >
+          <div className="col-md-4 col-lg-3 col-12" key={movie._id}>
+          <Link href={`watch-movie?id=${movie._id}`} ><div className="movie-card"  >
             
             <div className="movie-info">
               <h4 className="card-movie-title">{movie.name}</h4>
               <div className="movie-card-description">{movie.description}</div>
             </div>
             <div className="movie-card-thumbnail">
-              <img src={movie.poster} alt={movie.name} />
+              <img width={100} height={100} className="w-100"  src={movie.poster} alt={movie.name} />
             </div>
             
           </div></Link>
