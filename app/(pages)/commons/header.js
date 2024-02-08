@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link';
+import { Cross as Hamburger } from 'hamburger-react';
 import '../styles/navbar.css';
 
 export default function Header({onSideclick,sideStatus}){
@@ -7,14 +8,14 @@ export default function Header({onSideclick,sideStatus}){
     return(
         <>
             <nav id="main-nav">
-                <div className="container"> 
+                <div className="navbar-wrap"> 
                 <div className="nav-control">
-                    <div>
-                        <div onClick={onSideclick}>
-                            Toggle Button
+                    <div className="nav-logo-control">
+                        <div className='me-3' onClick={onSideclick}>                            
+                            <Hamburger  size={40} />
                         </div>
                     <div className="nav-logo">
-                        <Link href='/'><h4>TrailerMate</h4></Link>
+                        <Link href='/'><h4 className='brand-logo-text'>TrailerMate</h4></Link>
                     </div>
                     </div>
                     <div className="nav-contents">

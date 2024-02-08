@@ -8,12 +8,27 @@
     z-index: 100;
 }
 
+.navbar-wrap{
+    padding: 0 3vw;
+}
+
 .nav-control{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     height: var(--header-height);
+}
+
+.nav-logo-control{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.brand-logo-text{
+    margin: 0;
+    font-size: 30px;
 }
 
 .nav-contents{
@@ -40,7 +55,8 @@
     top: var(--header-height);
     left: 0;
     width: var(--sidebar-width);
-    background: var(--theme-dark);
+    background: #080808bf;
+    backdrop-filter: blur(20px);
     overflow-y: scroll;
     z-index: 50;
     transform: translateX(-100%);
@@ -50,4 +66,41 @@
 .sidebar.active{
     transform: translateX(0);
 
+}
+
+.sidebar-links{
+    list-style: none;
+    padding: 15px;
+}
+
+.sidebar-links li{
+    /* position: relative;s */
+    background: #80808000;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 18px;
+    margin: 8px 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid #ffffff0a;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+}
+
+.sidebar-links li .glow-link{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    z-index: 5;
+    pointer-events: none;
+    background-color: white;
+    filter: blur(22px);
+}
+
+.sidebar-links li svg{
+    margin-right: 14px;
 }
