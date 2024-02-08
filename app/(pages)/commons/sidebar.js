@@ -25,9 +25,8 @@ export default function SideBar({sideStatus}){
                 let mouseX = e.clientX;
                 let mouseY = e.clientY;
                 let glowElement = item.querySelector('.glow-link');
-                console.log(e);
                 if (glowElement) {
-                    // glowElement.style.top =  mouseY + 'px';
+                    glowElement.style.top =  mouseY/15 + 'px';
                     glowElement.style.left =  mouseX + 'px';
                 }
             })

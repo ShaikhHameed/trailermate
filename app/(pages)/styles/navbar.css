@@ -74,7 +74,7 @@
 }
 
 .sidebar-links li{
-    /* position: relative;s */
+    position: relative;
     background: #80808000;
     padding: 9px 16px;
     border-radius: 8px;
@@ -98,7 +98,13 @@
     z-index: 5;
     pointer-events: none;
     background-color: white;
-    filter: blur(22px);
+    filter: blur(30px);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.sidebar-links li:hover .glow-link{
+    opacity: 1;
 }
 
 .sidebar-links li svg{
