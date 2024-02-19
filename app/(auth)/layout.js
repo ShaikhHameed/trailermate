@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body >
        <React.StrictMode>
-        <div class="sign-up-page text-white" style={{backgroundImage:`url(${Bg.src})`}} >
+        <div className="sign-up-page text-white" style={{backgroundImage:`url(${Bg.src})`}} >
             {children}
         </div>
         </React.StrictMode>

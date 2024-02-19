@@ -8,6 +8,8 @@ import { SlHeart } from "react-icons/sl";
 import { SlList } from "react-icons/sl";
 import { SlUser } from "react-icons/sl";
 import { SlUserFollow } from "react-icons/sl";
+import { FcLike } from "react-icons/fc";
+
 
 
 
@@ -19,7 +21,6 @@ export default function SideBar({sideStatus}){
     useEffect(()=>{
         
         let SidebarLinksElems = document.querySelectorAll('.sidebar-links li');
-
         SidebarLinksElems.forEach((item,itemInddex)=>{
             item.addEventListener('mousemove',(e)=>{
                 let mouseX = e.clientX;
@@ -40,10 +41,10 @@ export default function SideBar({sideStatus}){
                 <ul className="sidebar-links">
                     <li> <SlMagnifier /> Search</li>
                     <Link href='/'><li> <SlHome /> Home <div className="glow-link"></div></li></Link>
-                    <li> <SlHeart /> Liked</li>
-                    <li> <SlList /> Watchlist</li>
-                    <Link href='/login'><li><SlUser/> Login</li></Link>
-                    <Link href='/signup'><li><SlUserFollow /> Signup</li></Link>
+                    <li> <SlHeart /> Liked <div className="glow-link"></div></li>
+                    <li> <SlList /> Watchlist <div className="glow-link"></div></li>
+                    <Link href='/login'><li><SlUser/> Login <div className="glow-link"></div></li></Link>
+                    <Link href='/signup'><li><SlUserFollow /> Signup <div className="glow-link"></div></li></Link>
                 </ul>
             </div>
         </>

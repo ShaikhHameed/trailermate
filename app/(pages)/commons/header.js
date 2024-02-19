@@ -20,9 +20,9 @@ export default function Header({onSideclick,sideStatus}){
                     </div>
                     <div className="nav-contents">
                         
-                        <div><form>
-                            <input type="search" className="input-search" name="search" />
-                        </form></div>
+                        <div>
+                            <h4 className="fw-light">Howdy, Shaikh</h4>
+                        </div>
 
                         <div className="profile-image ms-3">
                             <img className="profile-image" src="https://wallpapers.com/images/hd/netflix-profile-pictures-5yup5hd2i60x7ew3.jpg" />

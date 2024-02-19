@@ -91,7 +91,7 @@ export default function Signup(){
                     <div >
                         <div className="form-group">
                             <label>Email</label>
-                            <input type="email" name="email" onChange={enterEmail} value={credemail} placeholder="Enter Your Password" />
+                            <input type="email" name="email" onChange={enterEmail} value={credemail} placeholder="Enter Your Password"/>
                         </div>
                         <div className="form-group">
                             <label>Password</label>

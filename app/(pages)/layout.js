@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import Header from './commons/header';
-import SideBar from './commons/sidebar';
 import '../globals.css'
 import HeaderLayout from './commons/headerLayout';
 

@@ -1,18 +1,36 @@
 'use client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
-import DOMPurify from 'dompurify';
+import { SlHeart } from "react-icons/sl";
+import { MdPlaylistAdd } from "react-icons/md";
+import { MdPlaylistAddCheck } from "react-icons/md";
+
+
+
+
+
 
 export default function WatchMovie() {
   const [trailer, setTrailer] = useState(null);
   const searchParam = useSearchParams();
   const movieId = searchParam.get('id');
+  const [movieInfo,setMovieInfo] = useState({});
+
+  const [liked,setLiked] = useState(false);
+  const [watchedList,setWatchedList] = useState(false);
 
   const router = useRouter();
 
   // const {id} = router.query();
 
   // alert(id);
+
+  const changeLike=()=>{
+    liked==true ? setLiked(false) : setLiked(true);
+  }
+  const changeWatchList=()=>{
+    watchedList==true ? setWatchedList(false) : setWatchedList(true);
+  }
 
   useEffect(() => {
     (async () => {
@@ -22,6 +40,8 @@ export default function WatchMovie() {
   
       const response = await fetchMovie.json();
       setTrailer(response.movies.trailer);
+      setMovieInfo(response.movies);
+      console.log(response);
     })();
   }, [movieId]);
 
@@ -39,6 +59,27 @@ export default function WatchMovie() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
+          
+          <div className='video-actions-info'>
+            <div className='row mt-4'>
+              <div className='col-md-8'>
+                 <h4 className='video-title h2'>{movieInfo.name}</h4>
+              </div>
+              <div className='col-md-4'>
+                <div className='video-actions'>
+                  <div className='like-button' onClick={changeLike} style={{cursor:'pointer'}} >
+                    <SlHeart size={30} color={liked==true ? 'red' : 'white'}  />
+                    </div>
+                  <div className='like-button' onClick={changeWatchList} style={{cursor:'pointer'}} >
+                    {watchedList==true? <MdPlaylistAddCheck size={30} /> : <MdPlaylistAdd size={30} /> }
+                    
+                </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
         </div>
       </div>
       </>
