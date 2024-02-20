@@ -21,7 +21,7 @@ export default function Header({onSideclick,sideStatus}){
                     <div className="nav-contents">
                         
                         <div>
-                            <h4 className="fw-light">Howdy, Shaikh</h4>
+                            <h4 className="fw-light m-0">Howdy, Shaikh</h4>
                         </div>
 
                         <div className="profile-image ms-3">

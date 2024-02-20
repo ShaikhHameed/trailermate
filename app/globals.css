@@ -68,6 +68,7 @@ a{
     border-radius: 8px;
     z-index: 1;
     cursor: pointer;
+    background: #1a1a1a;
 }
 
 .movie-card::before{
@@ -155,7 +156,9 @@ a{
   justify-content: flex-end;
 }
 
-
+img{
+  color: transparent;
+}
 
 
 
@@ -193,6 +196,15 @@ a{
   background: var(--skeleton-dark);
   border-radius: 14px;
   animation: skelton-glow 1.5s ease-in-out infinite;
+}
+
+.movie-single-skeleton{
+  width: 100%;
+  height:auto;
+  aspect-ratio: 16/10;
+  background: var(--skeleton-dark);
+  border-radius: 14px;
+  animation: skelton-glow 1.8s ease-in-out infinite;
 }
 
 @keyframes skelton-glow{

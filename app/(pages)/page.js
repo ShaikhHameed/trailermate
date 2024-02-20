@@ -3,12 +3,15 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from 'next/image'
+import MovieCard from "../components/moviecard";
+import MultipleMovieLoadingHorizontal from "../components/multipleMovieLoadingHorizontal";
 
 
 
 export default function Home() {
 
   const [AllMovies, setAllMovies] = useState([]);
+  const [loadedMovies,setLoadedMovies] = useState(false);
 
 
   useEffect (()=>{
@@ -22,6 +25,7 @@ export default function Home() {
         const moviesData = await getMovies.json();
         
         setAllMovies(moviesData);
+        setLoadedMovies(true);
 
         console.log(AllMovies); // Add this line
     }
@@ -38,26 +42,19 @@ export default function Home() {
 
     <>
       <h1>Home</h1>
-
+      {loadedMovies?(
       <div className="row g-3">
-
-        {AllMovies.map((movie,item)=>(
+        
+        {AllMovies.map((movie,item)=>( 
           <div className="col-md-4 col-lg-3 col-12" key={movie._id}>
-          <Link href={`watch-movie?id=${movie._id}`} ><div className="movie-card"  >
-            
-            <div className="movie-info">
-              <h4 className="card-movie-title">{movie.name}</h4>
-              <div className="movie-card-description">{movie.description}</div>
-            </div>
-            <div className="movie-card-thumbnail">
-              <img width={100} height={100} className="w-100"  src={movie.poster} alt={movie.name} />
-            </div>
-            
-          </div></Link>
+            <MovieCard data={movie} />
           </div>
-))}
+          ))}
+          
       </div>
-
+      ):(
+          <MultipleMovieLoadingHorizontal/>
+      )}
 
     </>
   );

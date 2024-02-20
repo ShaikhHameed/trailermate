@@ -2,6 +2,8 @@ import mongoose, { Schema } from "mongoose";
 
 const UsersSchema = new Schema(
   {
+    firstname:String,
+    lastname: String,
     email: String,
     password: String,
     last_loggedin: {
