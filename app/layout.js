@@ -1,5 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
 import React, { Suspense } from 'react';
+import './globals.css';
+
 
 
 

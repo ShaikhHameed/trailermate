@@ -45,7 +45,6 @@ export default function WatchMovie() {
       setTrailer(response.movies.trailer);
       setMovieInfo(response.movies);
       setisLoading(false);
-      console.log(response);
     })();
   }, [movieId]);
 
@@ -66,9 +65,7 @@ export default function WatchMovie() {
         ):(
           <>
           <iframe
-            width="100%"
-            height="550px"
-            className="rounded-4"
+            className="rounded-4 youtube-frame"
             src={trailer}
             title="YouTube video player"
             frameBorder="0"
@@ -79,7 +76,7 @@ export default function WatchMovie() {
           <div className='video-actions-info'>
             <div className='row align-items-center'>
               <div className='col-md-8'>
-                 <h4 className='video-title h4 fw-normal'>{movieInfo.name}</h4>
+                 <h4 className='video-title'>{movieInfo.name}</h4>
                  <p className='small'>{movieInfo.description}</p>
               </div>
               <div className='col-md-4'>

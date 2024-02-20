@@ -107,7 +107,8 @@ export default function Signup(){
                             <button type="submit"  disabled={credStatus}>SignUp</button>
                         </div>
                         <div className="form-group">
-                            <p className="text-center w-100">Already a user? <Link href="/login" className="text-white fw-semibold">Login</Link> </p>
+                            <p className="text-center w-100 m-0">Already a user? <Link href="/login" className="text-white fw-semibold">Login</Link> </p>
+                            <p className="text-center w-100 m-0">Back to <Link href="/" className="text-white fw-semibold">Home</Link></p>
                         </div>
                     </div>
                 </form>

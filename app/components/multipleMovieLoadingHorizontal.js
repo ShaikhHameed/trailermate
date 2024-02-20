@@ -29,6 +29,21 @@ export default function MultipleMovieLoadingHorizontal(){
             <div className="col-md-3">
                 <SingleMovieloading/>
             </div>
+            <div className="col-md-3">
+                <SingleMovieloading/>
+            </div>
+            <div className="col-md-3">
+                <SingleMovieloading/>
+            </div>
+            <div className="col-md-3">
+                <SingleMovieloading/>
+            </div>
+            <div className="col-md-3">
+                <SingleMovieloading/>
+            </div>
+            <div className="col-md-3">
+                <SingleMovieloading/>
+            </div>
         </div>    
     )
 

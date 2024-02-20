@@ -9,13 +9,13 @@
 
 body{
     background-color: black;
-    color: white;
+    color: white !important;
 }
 
 
 a{
-    color: inherit;
-    text-decoration: none;
+    color: inherit !important;
+    text-decoration: none !important;
 }
 
 
@@ -69,6 +69,10 @@ a{
     z-index: 1;
     cursor: pointer;
     background: #1a1a1a;
+}
+
+.tall-card{
+  aspect-ratio: 12/16;
 }
 
 .movie-card::before{
@@ -142,6 +146,12 @@ a{
     padding: 3vw;
 }
 
+
+.video-title{
+    font-size: 32px;
+    font-weight: 600;
+}
+
 .video-actions-info{
   border-radius: 8px;
   background: #141414;
@@ -160,7 +170,59 @@ img{
   color: transparent;
 }
 
+.youtube-frame{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/8;
+  object-fit: cover;
+}
 
+.movie-main-banner{
+    width: 100%;
+    height: 540px;    
+    overflow: hidden;
+    border-radius: 14px;
+    position: relative;
+    border: 1px solid #1e1e1e;
+}
+
+.movie-main-banner::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(88deg, #0072ff 40%, transparent 100%);
+    z-index: 5;
+}
+
+
+.home-banner-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.home-banner-description{
+  position: relative;
+  height: 100%;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 10;
+  max-width: 500px;
+}
+
+
+.swiper {
+  width: 100%;
+  height: auto;
+}
 
 
   

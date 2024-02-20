@@ -7,6 +7,8 @@ const MovieScheme =  new Schema(
         poster:String,
         description:String,
         trailer:String,
+        tags:String,
+        language:String,
     },{
         timestamps:true,
     }

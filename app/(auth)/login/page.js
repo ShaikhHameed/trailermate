@@ -48,8 +48,6 @@ export default function Login(){
             });
 
             const response = await (submitUser.json());
-            console.log(response);
-
             if(response.status == 'ok'){
                 ClearForm();
             }
@@ -81,7 +79,8 @@ export default function Login(){
                     </div>
 
                     <div className="form-group">
-                        <p className="text-center w-100">New to TrailerMate? <Link href="/signup" className="text-white fw-semibold">Join Now</Link></p>
+                        <p className="text-center w-100 m-0">New to TrailerMate? <Link href="/signup" className="text-white fw-semibold">Join Now</Link></p>
+                        <p className="text-center w-100 m-0">Back to <Link href="/" className="text-white fw-semibold">Home</Link></p>
                     </div>
                 </div>
             </form>

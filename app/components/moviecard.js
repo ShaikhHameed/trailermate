@@ -4,8 +4,6 @@ import SingleMovieloading from "./singleMovieLoad";
 
 export default function MovieCard({data}){
 
-    console.log(data);
-
     return(
         <>
         {data?(
