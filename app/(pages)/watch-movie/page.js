@@ -11,6 +11,9 @@ import { MdPlaylistAddCheck } from "react-icons/md";
 
 
 export default function WatchMovie() {
+  // Loading Animation 
+  const [isLoading, setisLoading] = useState(true);
+
   const [trailer, setTrailer] = useState(null);
   const searchParam = useSearchParams();
   const movieId = searchParam.get('id');
@@ -41,14 +44,27 @@ export default function WatchMovie() {
       const response = await fetchMovie.json();
       setTrailer(response.movies.trailer);
       setMovieInfo(response.movies);
+      setisLoading(false);
       console.log(response);
     })();
   }, [movieId]);
 
   return (
     <>
+     
+      <div className='loading'>
+        
+      </div>
+      
       <div className="row m-0">
         <div className="col-md-8">
+        {isLoading? (
+          <>
+            <div className='video-skeleton'></div>
+            <div className='video-content-skeleton'></div>
+          </>
+        ):(
+          <>
           <iframe
             width="100%"
             height="550px"
@@ -61,27 +77,29 @@ export default function WatchMovie() {
           />
           
           <div className='video-actions-info'>
-            <div className='row mt-4'>
+            <div className='row align-items-center'>
               <div className='col-md-8'>
-                 <h4 className='video-title h2'>{movieInfo.name}</h4>
+                 <h4 className='video-title h4 fw-normal'>{movieInfo.name}</h4>
+                 <p className='small'>{movieInfo.description}</p>
               </div>
               <div className='col-md-4'>
                 <div className='video-actions'>
                   <div className='like-button' onClick={changeLike} style={{cursor:'pointer'}} >
-                    <SlHeart size={30} color={liked==true ? 'red' : 'white'}  />
+                    <SlHeart size={25} color={liked==true ? 'red' : 'white'}  />
                     </div>
                   <div className='like-button' onClick={changeWatchList} style={{cursor:'pointer'}} >
-                    {watchedList==true? <MdPlaylistAddCheck size={30} /> : <MdPlaylistAdd size={30} /> }
-                    
+                    {watchedList==true? <MdPlaylistAddCheck size={25} /> : <MdPlaylistAdd size={25} /> }
                 </div>
                 </div>
               </div>
             </div>
             
           </div>
-
+          </>
+         )}
         </div>
       </div>
+     
       </>
   );
 }
