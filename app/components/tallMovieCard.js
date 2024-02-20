@@ -6,7 +6,7 @@ export default function  TallMovieCard(){
 
          <div className="movie-card tall-card"  >
             <div className="movie-info">
-              <h4 className="card-movie-title">Shawshank redemption</h4>
+              <h4 className="card-movie-title">Shawshank Redemption</h4>
               <div className="movie-card-description">Nice Movie</div>
             </div>
             <div className="movie-card-thumbnail">

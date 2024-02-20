@@ -15,21 +15,9 @@ export default function AuthorsChoiceSlider(){
     return (
       <>
             <Swiper
-            spaceBetween={30}
-            modules={[Pagination]}
+            spaceBetween={15}
+            slidesPerView="auto"
             draggable={true}
-            breakpoints={{
-                1280: {
-                    slidesPerView: 6,
-                },
-                992: {
-                    slidesPerView: 4,
-                },
-                640: {
-                slidesPerView: 2,
-                },
-
-            }}
             className="mySwiper"
         >
                 <SwiperSlide><TallMovieCard/></SwiperSlide>

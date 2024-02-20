@@ -73,6 +73,7 @@ a{
 
 .tall-card{
   aspect-ratio: 12/16;
+  max-width: 250px;
 }
 
 .movie-card::before{
@@ -222,6 +223,10 @@ img{
 .swiper {
   width: 100%;
   height: auto;
+}
+
+.mySwiper .swiper-slide{
+      width: auto  !important;
 }
 
 
