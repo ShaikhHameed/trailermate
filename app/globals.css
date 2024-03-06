@@ -187,16 +187,16 @@ img{
     border: 1px solid #1e1e1e;
 }
 
-/* .movie-main-banner::after{
+.movie-main-banner::after{
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(88deg, #0072ff 40%, transparent 100%);
+    background: linear-gradient(88deg, #0000005e 40%, transparent 100%);
     z-index: 5;
-} */
+}
 
 
 .home-banner-bg{
@@ -226,7 +226,7 @@ img{
     z-index: 14;
     display: inline-block;
     padding: 12px 20px;
-    background: var(--theme-dark);
+    background: #36b3ff;
     border-bottom-right-radius: 21px;
     font-size: 14px;
     letter-spacing: 2px;
