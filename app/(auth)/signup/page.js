@@ -1,14 +1,18 @@
 "use client"
 import { useState } from "react"
 import Link from "next/link";
-
-
+import { useRouter } from "next/navigation";
 
 export default function Signup(){
+
+    const { push } = useRouter();
     
+
     const [credStatus,setCredStatus] = useState(false);
     const [errMsg, setErrMsg] = useState(true);
 
+    const [firstname,Setfirstname] = useState('');
+    const [lastname,setLastname] = useState('');
     const [credemail,SetEmail] = useState('');
     const [password, Setpassword] = useState('');
     const [confirmPass,setConfirmPass] = useState('')
@@ -24,6 +28,16 @@ export default function Signup(){
     const enterPassword =(e)=>{
         const userpassword = e.target.value;
         Setpassword(userpassword);
+    }
+
+    const enterFirstname = (e)=>{
+        const userFirstname = e.target.value;
+        Setfirstname(userFirstname);
+    }
+
+    const enterLastname = (e)=>{
+        const userLastname = e.target.value;
+        setLastname(userLastname);
     }
 
     const validateconfirmpassword = (user,confirm)=>{
@@ -47,6 +61,8 @@ export default function Signup(){
         SetEmail("");
         Setpassword("");
         setConfirmPass("");
+        Setfirstname("");
+        setLastname("");
     }
     
 
@@ -57,7 +73,7 @@ export default function Signup(){
 
         (async()=>{
             try{
-                const Formdata = {'email':credemail,'password':password};
+                const Formdata = {'firstname':firstname, 'lastname':lastname,'email':credemail,'password':password};
 
                 const Data = JSON.stringify(Formdata);
                 console.log(Data);    
@@ -74,6 +90,7 @@ export default function Signup(){
 
             if(response.status == 'ok'){
                 ClearForm();
+                push('/login');
             }
 
         }
@@ -90,16 +107,24 @@ export default function Signup(){
                 <form onSubmit={submitSignup}>
                     <div >
                         <div className="form-group">
+                            <label>Firstname</label>
+                            <input type="text" name="firstname" onChange={enterFirstname} value={firstname} placeholder="Enter Your Password" required/>
+                        </div>
+                        <div className="form-group">
+                            <label>Lastname</label>
+                            <input type="text" name="lastname" onChange={enterLastname} value={lastname} placeholder="Enter Your Password" required/>
+                        </div>
+                        <div className="form-group">
                             <label>Email</label>
-                            <input type="email" name="email" onChange={enterEmail} value={credemail} placeholder="Enter Your Password"/>
+                            <input type="email" name="email" onChange={enterEmail} value={credemail} placeholder="Enter Your Password" required/>
                         </div>
                         <div className="form-group">
                             <label>Password</label>
-                            <input type="password" name="password" onChange={enterPassword} value={password} placeholder="Enter Your Password" />
+                            <input type="password" name="password" onChange={enterPassword} value={password} placeholder="Enter Your Password" required/>
                         </div>
                         <div className="form-group">
                             <label>Confirm Password</label>
-                            <input type="password" name="password-confirm" onChange={confirmPassword} value={confirmPass}  placeholder="Confirm Your Password" />
+                            <input type="password" name="password-confirm" onChange={confirmPassword} value={confirmPass}  placeholder="Confirm Your Password" required/>
                             {errMsg !==true && <p className="text-danger">Password does not Match</p>}
                         </div>
 

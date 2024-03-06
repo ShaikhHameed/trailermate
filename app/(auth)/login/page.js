@@ -1,14 +1,24 @@
 "use client"
 import Link from "next/link";
 import { useState } from "react"
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 
 export default function Login(){
+
+    const { push } = useRouter();
+
     const [credStatus,setCredStatus] = useState(false);
     const [credemail,SetEmail] = useState('');
     const [password, Setpassword] = useState('');
 
-   
+   const [errMsg,setErrMSg] = useState('');
+   const [showMsg,setShowMSg] = useState(false);
+
+
+   const [succsessMsg,setSuccessMg] = useState('');
+   const [showSuccess,setShowSuccess] = useState(false);
 
     const enterEmail = (e) =>{
         const Useremail = e.target.value;
@@ -28,8 +38,9 @@ export default function Login(){
     }
     
 
-    const submitSignup = (e)=>{
+    const submitSignup = async(e)=>{
         e.preventDefault();
+
          const currForm = e.target;
         
 
@@ -39,17 +50,28 @@ export default function Login(){
 
                 const Data = JSON.stringify(Formdata);
                 console.log(Data);    
-                const submitUser = await fetch('/api/login-user',{
+                const submitUser = await fetch('/api/auth/login',{
                     method:"POST",
                     body:Data,
                     headers: {
                         'Content-Type': 'application/json',
                     }
             });
-
+ 
             const response = await (submitUser.json());
             if(response.status == 'ok'){
                 ClearForm();
+                setSuccessMg("Login Successful!")
+                setShowSuccess(true);
+                push('/');
+            }
+            else{
+                setErrMSg('Invalid Credentials!');
+                setShowMSg(true);
+
+                setTimeout(()=>{
+                    setShowMSg(false);
+                },3000);
             }
 
         }
@@ -74,9 +96,14 @@ export default function Login(){
                         <input type="password" name="password" onChange={enterPassword} value={password} placeholder="Enter Your Password" />
                     </div>
 
-                    <div className="form-group">
-                        <button type="submit"  disabled={credStatus}>Login</button>
+                    <div className="form-group mb-4">
+                        <button type="submit" className=" mb-2"  disabled={credStatus}>Login Now</button>
+                        {showSuccess? (<><div className="h6 fw-bold text-success text-center">{succsessMsg}</div></>) : (<></>)}
+                        {showMsg? (
+                            <><div className="h6 fw-bold text-danger text-center">{errMsg}</div></>
+                        ) :(<></>) }
                     </div>
+                       
 
                     <div className="form-group">
                         <p className="text-center w-100 m-0">New to TrailerMate? <Link href="/signup" className="text-white fw-semibold">Join Now</Link></p>

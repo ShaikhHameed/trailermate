@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import HeaderLayout from './commons/headerLayout';
+import HeaderConfig from './commons/headerConfig';
 
 
 
@@ -14,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     
        <React.StrictMode>
-        <HeaderLayout/>
+        <HeaderConfig/>
         <div className="body-content-wrap">
             {children}
         </div>

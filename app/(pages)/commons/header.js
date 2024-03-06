@@ -1,9 +1,24 @@
-'use client'
 import Link from 'next/link';
 import { Cross as Hamburger } from 'hamburger-react';
 import '../styles/navbar.css';
+import { useState, useEffect } from 'react';
 
-export default function Header({onSideclick,sideStatus}){
+
+
+
+
+export default function Header({onSideclick,userCheck}){
+
+    const [userLogged, setUserLogged] = useState(true);    
+    useEffect(()=>{
+        if(userCheck.userId){
+            setUserLogged(true);
+        }
+        else{
+            setUserLogged(false);
+        }
+    },[])
+
 
     return(
         <>
@@ -19,14 +34,20 @@ export default function Header({onSideclick,sideStatus}){
                     </div>
                     </div>
                     <div className="nav-contents">
-                        
-                        <div>
-                            <h4 className="fw-light m-0">Howdy, Shaikh</h4>
-                        </div>
+                        {userLogged ==true?(
+                            <>
+                            <div>
+                                <h4 className="fw-light m-0">Howdy, Shaikh</h4>
+                            </div>
 
-                        <div className="profile-image ms-3">
-                            <img className="profile-image" alt="my-profile" src="https://wallpapers.com/images/hd/netflix-profile-pictures-5yup5hd2i60x7ew3.jpg" />
-                        </div>
+                            <div className="profile-image ms-3">
+                                <img className="profile-image" alt="my-profile" src="https://wallpapers.com/images/hd/netflix-profile-pictures-5yup5hd2i60x7ew3.jpg" />
+                            </div>
+                            </>
+                        ):(
+                            <Link href="/login"><button className='btn btn-danger px-4'>Login</button></Link>
+
+                        )}
 
                     </div>
                     

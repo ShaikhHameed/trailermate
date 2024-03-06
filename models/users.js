@@ -5,11 +5,8 @@ const UsersSchema = new Schema(
     firstname:String,
     lastname: String,
     email: String,
+    phone:Number,
     password: String,
-    last_loggedin: {
-      type: Date,
-      default: Date.now,
-    },
   },
   {
     timestamps: true,
