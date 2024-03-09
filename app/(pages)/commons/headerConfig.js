@@ -14,7 +14,6 @@ export default async function HeaderConfig({ req, res }) {
     else{
         var DecodeuserToken = {userId :''}
     }
-    // const verifyJWT = jwt.verify(); 
     return (
       <HeaderLayout  userLoginCheck={DecodeuserToken} /> // Pass userLoggedIn prop
     );

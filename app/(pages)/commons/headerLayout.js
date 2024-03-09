@@ -16,7 +16,7 @@ export default function HeaderLayout({userLoginCheck}) {
     return <>
             
             <Header onSideclick = {chnageSideState} userCheck={userLoginCheck} sideStatus={sideState}/>
-            <SideBar sideStatus={sideState}/>
+            <SideBar sideStatus={sideState} userCheck={userLoginCheck} />
     
     </>
 }
