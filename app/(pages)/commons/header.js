@@ -70,16 +70,16 @@ export default function Header({onSideclick,userCheck}){
                                 <img className="profile-image cursor-pointer" alt="my-profile" onClick={()=>{showDropdown? setshowDropdown(false):setshowDropdown(true)}} src="https://wallpapers.com/images/hd/netflix-profile-pictures-5yup5hd2i60x7ew3.jpg" />
 
                                 {showDropdown && (
-                                <ul class="profile-dropdown ">
+                                <ul className="profile-dropdown ">
                                     <li><FaRegUser  /> My Account</li>
-                                    <li><IoIosLogOut/> Logout</li>
+                                    <Link href='/logout'><li><IoIosLogOut/> Logout</li></Link>
                                 </ul>
                                 )}
                             </div>
                             
                             </>
                         ):(
-                            <Link href="/login"><button className='btn btn-danger px-4'>Login</button></Link>
+                            <Link href="/login"><button className='btn-theme px-4'>Login</button></Link>
 
                         )}
 

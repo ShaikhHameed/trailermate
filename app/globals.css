@@ -26,6 +26,26 @@ a{
   cursor: pointer !important;
 }
 
+.text-theme-yellow{
+  color: var(--theme-yellow) !important;
+}
+
+
+.text-theme-blue{
+  color: var(--theme-blue) !important;
+}
+
+
+/* Theme Buttons  */
+.btn-theme{
+  background:var(--theme-yellow);
+  padding: 8px 16px;
+  color: var(--theme-dark);
+  font-weight: 500;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 8px;
+}
 
 
 
@@ -252,6 +272,12 @@ img{
       width: auto  !important;
 }
 
+
+.login-message-video{
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+}
 
   
 

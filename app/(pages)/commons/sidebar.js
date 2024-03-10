@@ -17,7 +17,7 @@ import { FcLike } from "react-icons/fc";
 
 export default function SideBar({sideStatus,userCheck}){
 
-    const [userLogged, setUserLogged] = useState(true);    
+    const [userLogged, setUserLogged] = useState(false);    
 
 
     useEffect(()=>{
@@ -52,7 +52,7 @@ export default function SideBar({sideStatus,userCheck}){
                     <Link href='/'><li> <SlHome /> Home <div className="glow-link"></div></li></Link>
                     <li> <SlHeart /> Liked <div className="glow-link"></div></li>
                     <li> <SlList /> Watchlist <div className="glow-link"></div></li>
-                    {setUserLogged? (<>
+                    {userLogged? (<>
                         <Link href='/'><li><SlUser/> My Account <div className="glow-link"></div></li></Link>
                     </>):(
                      <>  

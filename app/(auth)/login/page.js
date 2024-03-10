@@ -63,7 +63,7 @@ export default function Login(){
                 ClearForm();
                 setSuccessMg("Login Successful!")
                 setShowSuccess(true);
-                push('/');
+                push('/',undefined,{ shallow: false });
             }
             else{
                 setErrMSg('Invalid Credentials!');

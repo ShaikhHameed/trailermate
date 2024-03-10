@@ -9,7 +9,6 @@ export default function HeaderLayout({userLoginCheck}) {
     const [sideState, setSideState] = useState(0);
     const chnageSideState = ()=>{
             sideState ===1 ? setSideState(0) : setSideState(1);
-            console.log(sideState);
     }
 
 
