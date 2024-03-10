@@ -31,8 +31,9 @@ export default function MoviePage({user}) {
 
  
   // check for likes & Wish List
- if(user){
+ 
   useEffect(()=>{
+    if(user){
      async function checkforLikes(){
         const checkLike = await fetch(`api/video-actions/check/${movieId}`,{
           method:'POST',
@@ -69,9 +70,9 @@ export default function MoviePage({user}) {
 
     checkforWishlist();
 
-  },[])
+  }
 
-}
+  },[])
 
   const changeLike= async()=>{
     if(liked==true){
