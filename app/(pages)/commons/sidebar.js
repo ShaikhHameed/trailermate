@@ -50,9 +50,10 @@ export default function SideBar({sideStatus,userCheck}){
                 <ul className="sidebar-links">
                     <li> <SlMagnifier /> Search</li>
                     <Link href='/'><li> <SlHome /> Home <div className="glow-link"></div></li></Link>
-                    <li> <SlHeart /> Liked <div className="glow-link"></div></li>
-                    <li> <SlList /> Watchlist <div className="glow-link"></div></li>
+                    
                     {userLogged? (<>
+                        <li> <SlHeart /> Liked <div className="glow-link"></div></li>
+                        <li> <SlList /> Watchlist <div className="glow-link"></div></li>
                         <Link href='/'><li><SlUser/> My Account <div className="glow-link"></div></li></Link>
                     </>):(
                      <>  

@@ -6,7 +6,7 @@ import HeaderConfig from './commons/headerConfig';
 
 
 export const metadata = {
-  title: "Trailer Mate",
+  title: "The Wishlist",
   description: "Watch Trailer, NOW",
 };
 
