@@ -7,10 +7,26 @@ import 'swiper/css/pagination';
 // import required modules
 import { Pagination } from 'swiper/modules';
 import TallMovieCard from '../tallMovieCard';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 
 export default function AuthorsChoiceSlider(){
+
+    const [loadingSlider,setLoadingSlider] = useState(false);
+    const [recomeded,setrecomended] = useState([]);
+
+    useEffect(()=>{
+
+        async function getToprecomendation(){
+            const TopRecomendation = await fetch('/api/top/getall',{
+                method:'GET',
+            });
+            const allRecomendations = await TopRecomendation.json();
+            setrecomended(allRecomendations);
+        }
+
+        getToprecomendation();
+    },[]);
 
     return (
       <>
@@ -20,14 +36,9 @@ export default function AuthorsChoiceSlider(){
             draggable={true}
             className="mySwiper"
         >
-                <SwiperSlide><TallMovieCard/></SwiperSlide>
-                <SwiperSlide><TallMovieCard/></SwiperSlide>
-                <SwiperSlide><TallMovieCard/></SwiperSlide>
-                <SwiperSlide><TallMovieCard/></SwiperSlide>
-                <SwiperSlide><TallMovieCard/></SwiperSlide>
-                <SwiperSlide><TallMovieCard/></SwiperSlide>
-                <SwiperSlide><TallMovieCard/></SwiperSlide>
-            
+                {recomeded.map((movie)=>(
+                <SwiperSlide key={movie._id}><TallMovieCard movieId={movie._id} movieName={movie.name} movieInfo={movie.description} moviePoster={movie.poster} /></SwiperSlide>
+                ))}
             </Swiper>
       </>
       )
