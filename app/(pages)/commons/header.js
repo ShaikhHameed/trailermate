@@ -79,7 +79,7 @@ export default function Header({onSideclick,userCheck}){
                             
                             </>
                         ):(
-                            <Link href="/login"><button className='btn-theme px-4'>Login</button></Link>
+                            <Link href="/login"><button className='btn-theme px-4'><span>Login</span></button></Link>
 
                         )}
 

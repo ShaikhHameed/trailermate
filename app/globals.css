@@ -38,13 +38,38 @@ a{
 
 /* Theme Buttons  */
 .btn-theme{
-  background:var(--theme-yellow);
+  position: relative;
+  background:var(--theme-blue);
   padding: 8px 16px;
-  color: var(--theme-dark);
+  color: white;
   font-weight: 500;
   letter-spacing: 1px;
   border: none;
   border-radius: 8px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.btn-theme span{
+  position: relative;
+  z-index: 5;
+}
+
+.btn-theme::before{
+  content: "";
+  position: absolute;
+  top:0;
+  left: 0;
+  height:100%;
+  width: 100%;
+  background:linear-gradient(to left, transparent ,var(--theme-aqua));
+  transform: translateX(-100%);
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.btn-theme:hover::before{
+  transform: translateX(0);
 }
 
 
@@ -146,7 +171,7 @@ a{
 
 .card-movie-title{
     font-size: 26px;
-    font-weight: 700;
+    font-weight: 400;
     margin: 0;
 }
 
@@ -154,6 +179,7 @@ a{
     font-size: 12px;
     line-height: 14px;
     margin: 0;
+    font-weight: 300;
 }
 
 .movie-card:hover .movie-info{
@@ -279,8 +305,23 @@ img{
   font-size: 14px;
 }
 
-  
+.list-box{
+  padding: 16px;
+  width: 100%;
+  background: #101010;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf05;
+}  
 
+
+.list-thumbnail{
+  width: 100%;
+  height:auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  background: var(--skeleton-glow);
+  border-radius: 8px;
+}
 
 
 

@@ -24,13 +24,14 @@
 
 .sign-box{
     width: 98%;
-    background: #161616;
+    background: #161616cf;
     border-radius: 14px;
     max-width: 380px;
-    border: 1px solid white;
+    border: 1px solid #ffffff24;
     padding: 1rem;
     position: relative;
     z-index: 10;
+    backdrop-filter: blur(6px);
 }
 
 .sign-box .form-group{
@@ -54,7 +55,7 @@
 
 }
 
-.sign-box button[type="submit"]{
+/* .sign-box button[type="submit"]{
     background-color: #E50914;
     width: 100%;
     border: none;
@@ -62,4 +63,4 @@
     border-radius: 8px;
     color: white;
     font-weight: 600;
-}
+} */

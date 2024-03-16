@@ -16,7 +16,7 @@ export default function HomeBanner(){
                              <div className="home-banner-description">
                                  <h2 className='h1'>DUNE: PART TWO</h2>
                                  <p className='small'> Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he must prevent a terrible future only he can foresee.</p>
-                                 <button className="btn btn-outline-light px-4 d-flex align-items-center">Watch Now</button>
+                                 <button className="btn-theme px-4 d-flex align-items-center"><span>Watch Now</span></button>
                              </div>
                          </div>
                      </div>

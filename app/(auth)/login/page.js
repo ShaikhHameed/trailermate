@@ -13,6 +13,8 @@ export default function Login(){
     const [credemail,SetEmail] = useState('');
     const [password, Setpassword] = useState('');
 
+    const [btnText, setBtntext] = useState(true);
+
    const [errMsg,setErrMSg] = useState('');
    const [showMsg,setShowMSg] = useState(false);
 
@@ -42,7 +44,8 @@ export default function Login(){
         e.preventDefault();
 
          const currForm = e.target;
-        
+         
+         setBtntext(false);
 
         (async()=>{
             try{
@@ -61,13 +64,15 @@ export default function Login(){
             const response = await (submitUser.json());
             if(response.status == 'ok'){
                 ClearForm();
-                setSuccessMg("Login Successful!")
+                setBtntext(true);
+                setSuccessMg("Login Successful!");
                 setShowSuccess(true);
                 push('/',undefined,{ shallow: false });
             }
             else{
                 setErrMSg('Invalid Credentials!');
                 setShowMSg(true);
+                setBtntext(true);
 
                 setTimeout(()=>{
                     setShowMSg(false);
@@ -97,7 +102,7 @@ export default function Login(){
                     </div>
 
                     <div className="form-group mb-4">
-                        <button type="submit" className=" mb-2"  disabled={credStatus}>Login Now</button>
+                        <button type="submit" className="btn-theme w-100 mb-2"  disabled={credStatus}><span>{btnText?'Login':'Please Wait..'}</span></button>
                         {showSuccess? (<><div className="h6 fw-bold text-success text-center">{succsessMsg}</div></>) : (<></>)}
                         {showMsg? (
                             <><div className="h6 fw-bold text-danger text-center">{errMsg}</div></>
