@@ -3,7 +3,7 @@ import TopRecomendation from "@/models/Toprecomendation";
 import Movies from "@/models/movies";
 import { NextResponse } from "next/server";
 
-
+export const revalidate = 1;
 export async function GET(){
 
     await connectMongoDb();
