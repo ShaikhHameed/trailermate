@@ -23,18 +23,17 @@ export default function Home() {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      
+      setLoadingMoreMovies(true);
       try {
         const response = await fetch(`/api/get-movies?page=${currentPage}&limit=${PAGE_SIZE}`,{
           method:'GET',
         });
         const newMovies = await response.json();
 
-        setTimeout(()=>{
           setAllMovies((prevMovies) => [...prevMovies, ...newMovies]);
           setLoadedMovies(true);
           setHasMore(newMovies.length === PAGE_SIZE); // Update hasMore based on received data length
-        },5000)
+          setLoadingMoreMovies(false);
        
       } catch (err) {
         console.error('Error fetching movies:', err);
@@ -49,10 +48,6 @@ export default function Home() {
 
     if (scrollTop + clientHeight >= scrollHeight - 100 && hasMore) { // Load near bottom with buffer
       setCurrentPage(currentPage + 1);
-      setLoadingMoreMovies(true);
-    }
-    else{
-      setLoadingMoreMovies(false)
     }
   };
 
@@ -89,14 +84,14 @@ export default function Home() {
               <MovieCard data={movie} />
             </div>
           ))}
-        {loadedMovies && !hasMore && <p>No more movies to load.</p>}
+        {loadedMovies && !hasMore && <p className="text-secondary text-center fs-5">No more movies to load.</p>}
         {/* {!loadedMovies && <MultipleMovieLoadingHorizontal/>} */}
       </div>
       ):(
           <MultipleMovieLoadingHorizontal/>
       )}
 
-    {loadingMoreMovie? <MultipleMovieLoadingHorizontal/>:''}
+    {loadingMoreMovie? <div class="mt-3"><MultipleMovieLoadingHorizontal/></div>:''}
     </>
   );
 }
