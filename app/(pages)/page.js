@@ -19,6 +19,7 @@ export default function Home() {
   const [loadedMovies, setLoadedMovies] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [loadingMoreMovie,setLoadingMoreMovies] = useState(false);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -29,9 +30,11 @@ export default function Home() {
         });
         const newMovies = await response.json();
 
-        setAllMovies((prevMovies) => [...prevMovies, ...newMovies]);
-        setLoadedMovies(true);
-        setHasMore(newMovies.length === PAGE_SIZE); // Update hasMore based on received data length
+        setTimeout(()=>{
+          setAllMovies((prevMovies) => [...prevMovies, ...newMovies]);
+          setLoadedMovies(true);
+          setHasMore(newMovies.length === PAGE_SIZE); // Update hasMore based on received data length
+        },5000)
        
       } catch (err) {
         console.error('Error fetching movies:', err);
@@ -46,6 +49,10 @@ export default function Home() {
 
     if (scrollTop + clientHeight >= scrollHeight - 100 && hasMore) { // Load near bottom with buffer
       setCurrentPage(currentPage + 1);
+      setLoadingMoreMovies(true);
+    }
+    else{
+      setLoadingMoreMovies(false)
     }
   };
 
@@ -75,7 +82,6 @@ export default function Home() {
         <h4 className="text-center h5 m-0"><MdLocalMovies size={20} /> Best Movies of All Time </h4>
       </div>
       {loadedMovies?(
-        
         <div className="row g-3">
         {loadedMovies &&
           allMovies.map((movie, index) => (
@@ -84,11 +90,13 @@ export default function Home() {
             </div>
           ))}
         {loadedMovies && !hasMore && <p>No more movies to load.</p>}
-        {!loadedMovies && <p>Loading movies...</p>}
+        {/* {!loadedMovies && <MultipleMovieLoadingHorizontal/>} */}
       </div>
       ):(
           <MultipleMovieLoadingHorizontal/>
       )}
+
+    {loadingMoreMovie? <MultipleMovieLoadingHorizontal/>:''}
     </>
   );
 }
