@@ -13,31 +13,46 @@ import AuthorsChoiceSlider from "../components/home-components/authorsChoice";
 
 
 export default function Home() {
+  const PAGE_SIZE = 20;
 
-  const [AllMovies, setAllMovies] = useState([]);
-  const [loadedMovies,setLoadedMovies] = useState(false);
+  const [allMovies, setAllMovies] = useState([]);
+  const [loadedMovies, setLoadedMovies] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
-
-  useEffect (()=>{
-    ( async() =>{
-      try{
-
-        const getMovies = await fetch('/api/get-movies',{
+  useEffect(() => {
+    const fetchMovies = async () => {
+      
+      try {
+        const response = await fetch(`/api/get-movies?page=${currentPage}&limit=${PAGE_SIZE}`,{
           method:'GET',
         });
+        const newMovies = await response.json();
 
-        const moviesData = await getMovies.json();
-        
-        setAllMovies(moviesData);
+        setAllMovies((prevMovies) => [...prevMovies, ...newMovies]);
         setLoadedMovies(true);
-    }
-    catch(err){
-        
-    }
-    } )();
+        setHasMore(newMovies.length === PAGE_SIZE); // Update hasMore based on received data length
+       
+      } catch (err) {
+        console.error('Error fetching movies:', err);
+      }
+    };
 
-    
-  },[]);
+    fetchMovies();
+  }, [currentPage]);
+
+  const handleScroll = async () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+    if (scrollTop + clientHeight >= scrollHeight - 100 && hasMore) { // Load near bottom with buffer
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [hasMore]); // Only add scroll listener when hasMore is true
 
 
   return (
@@ -61,14 +76,15 @@ export default function Home() {
       </div>
       {loadedMovies?(
         
-      <div className="row g-3">
-        
-        {AllMovies.map((movie,item)=>( 
-          <div className="col-md-4 col-lg-3 col-12" key={movie._id}>
-            <MovieCard data={movie} />
-          </div>
+        <div className="row g-3">
+        {loadedMovies &&
+          allMovies.map((movie, index) => (
+            <div className="col-md-4 col-lg-3 col-12" key={movie._id}>
+              <MovieCard data={movie} />
+            </div>
           ))}
-          
+        {loadedMovies && !hasMore && <p>No more movies to load.</p>}
+        {!loadedMovies && <p>Loading movies...</p>}
       </div>
       ):(
           <MultipleMovieLoadingHorizontal/>
