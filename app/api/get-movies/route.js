@@ -11,7 +11,7 @@ export async function GET(req) {
     const pageParams = params.get("page");
     const limitsParams = params.get("limt");
 
-   const PAGE_SIZE = 10;
+   const PAGE_SIZE = 20;
 
         
     const page = pageParams || 1;
