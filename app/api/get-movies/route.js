@@ -9,7 +9,7 @@ export async function GET(req) {
 
     const params = req.nextUrl.searchParams;
     const pageParams = params.get("page");
-    const limitsParams = params.get("limt");
+    const limitsParams = params.get("limit");
 
    const PAGE_SIZE = 20;
 
@@ -18,6 +18,6 @@ export async function GET(req) {
     const limit = limitsParams || PAGE_SIZE; // Ensure valid limit
     await connectMongoDb();
     const movies = await Movies.find().skip((page - 1) * limit).limit(limit);
-    console.log(pageParams);
+    console.log(page,limit);
     return NextResponse.json(movies);
   }
