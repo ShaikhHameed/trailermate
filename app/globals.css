@@ -211,6 +211,7 @@ a{
   border-radius: 8px;
   background: #141414;
   padding: 16px;
+  height: 100%;
   border: 1px solid #1a1a1a
 }
 
@@ -322,6 +323,25 @@ img{
   background: var(--skeleton-glow);
   border-radius: 8px;
 }
+
+
+.movies-side-card{
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.side-movie-img{
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+}
+
+.movies-side-card h6{
+  font-size: 24px;
+  font-weight: 400;
+}
+
+
 
 
 

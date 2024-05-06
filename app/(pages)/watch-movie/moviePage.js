@@ -5,6 +5,10 @@ import { SlHeart } from "react-icons/sl";
 import { MdPlaylistAdd } from "react-icons/md";
 import { MdPlaylistAddCheck } from "react-icons/md";
 import Link from 'next/link';
+import { FaMedal } from "react-icons/fa6";
+
+import RecommendedMovies from '@/app/components/recommendedMovies';
+import AuthorsChoiceSlider from '@/app/components/home-components/authorsChoice';
 
 
 
@@ -143,7 +147,7 @@ export default function MoviePage({user}) {
       </div>
       
       <div className="row m-0">
-        <div className="col-md-8">
+        <div className="col-md-9">
         {isLoading? (
           <>
             <div className='video-skeleton'></div>
@@ -160,32 +164,45 @@ export default function MoviePage({user}) {
             allowFullScreen
           />
           
-          <div className='video-actions-info'>
-            <div className='row align-items-center'>
-              <div className='col-md-8'>
-                 <h4 className='video-title'>{movieInfo.name}</h4>
-                 <p className='small'>{movieInfo.description}</p>
-              </div>
-              <div className='col-md-4'>
-                <div className='video-actions'>
-                  {user==false? (<>
-                    <p className='login-message-video'>Please <Link href='/login'><span className='text-theme-yellow fw-semibold'>Login</span></Link> to Like or Add it to your watchlist</p>
-                  </>):(<>  
-                    <div className='like-button' onClick={changeLike} style={{cursor:'pointer'}} >
-                    <SlHeart size={25} color={liked==true ? 'red' : 'white'}  />
-                    </div>
-                    <div className='like-button' onClick={changeWatchList} style={{cursor:'pointer'}} >
-                    {watchedList==true? <MdPlaylistAddCheck size={25} color='#50C4ED' /> : <MdPlaylistAdd size={25} /> }
-                    </div>
-                    </>)}
-                </div>
-              </div>
-            </div>
-            
-          </div>
+          
           </>
          )}
         </div>
+
+         <div className="col-md-3">
+          <div className='video-actions-info'>
+              <div className='row gy-4 align-items-center'>
+
+              <div className='col-12'>
+                  <div className='video-actions'>
+                    {user==false? (<>
+                      <p className='login-message-video'>Please <Link href='/login'><span className='text-theme-yellow fw-semibold'>Login</span></Link> to Like or Add it to your watchlist</p>
+                    </>):(<>  
+                      <div className='like-button' onClick={changeLike} style={{cursor:'pointer'}} >
+                      <SlHeart size={25} color={liked==true ? 'red' : 'white'}  />
+                      </div>
+                      <div className='like-button' onClick={changeWatchList} style={{cursor:'pointer'}} >
+                      {watchedList==true? <MdPlaylistAddCheck size={25} color='#50C4ED' /> : <MdPlaylistAdd size={25} /> }
+                      </div>
+                      </>)}
+                  </div>
+                </div>
+
+                <div className='col-12'>
+                  <h4 className='video-title'>{movieInfo.name}</h4>
+                  <p className='small'>{movieInfo.description}</p>
+                </div>
+                
+              </div>
+              
+            </div>
+         </div>
+
+      </div>
+
+      <div className='mt-5'>
+        <h4 className="text-center h5 mb-4 m-0"><FaMedal size={20} /> Author's Top Recommendations</h4>
+        <AuthorsChoiceSlider/>
       </div>
      
       </>

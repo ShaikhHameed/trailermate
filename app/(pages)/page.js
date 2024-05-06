@@ -34,6 +34,7 @@ export default function Home() {
           setLoadedMovies(true);
           setHasMore(newMovies.length === PAGE_SIZE); // Update hasMore based on received data length
           setLoadingMoreMovies(false);
+          console.log(hasMore);
       } catch (err) {
         console.error('Error fetching movies:', err);
       }
