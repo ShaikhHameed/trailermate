@@ -22,6 +22,9 @@
 .env
 movie.text
 
+git commit -m "Remove .env file"
+git push origin HEAD --force
+
 # debug
 npm-debug.log*
 yarn-debug.log*
